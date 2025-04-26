@@ -60,9 +60,7 @@ Environment Validation: Safely loads API keys from .env and throws errors if mis
 
 ## 🏗️ Implementation Details
 # 1. Environment Setup
-.env must contain GEMINI_API_KEY.
-
-TAVILY_API_KEY is hardcoded for demo (you should replace it with env variable for production).
+.env must contain GEMINI_API_KEY, TAVILY_API_KEY.
 
 # 2. Agents Setup
 Research and Draft prompts are designed using ChatPromptTemplate.
