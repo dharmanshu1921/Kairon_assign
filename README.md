@@ -78,7 +78,11 @@ Edges connect nodes based on conditions like tool calls.
 ToolNode wraps around Tavily Search and a fallback error handler using RunnableLambda.
 
 # 5. Visualization
-graph.get_graph(xray=True).draw_mermaid_png() generates a visual PNG of the system workflow.
+`graph.get_graph(xray=True).draw_mermaid_png()` generates a visual PNG of the system workflow.
+
+![Workflow Graph](https://github.com/dharmanshu1921/Kairon_assign/raw/main/workflow_graph.png)
+
+
 
 # 6. Streaming Execution
 Events are streamed with live output printed after each step.
@@ -131,9 +135,10 @@ pip install -r requirements.txt
 
 # 4. Create a .env file
 echo "GEMINI_API_KEY=your_gemini_api_key_here" > .env
+echo "TAVILY_API_KEY=your_tavily_api_key_here" > .env
 
 # 5. Run the system
-python main.py
+python Dual_agent.py
 
 ## 📢 Future Improvements
 ✅ Use dynamic configurable API keys (Tavily from env).
