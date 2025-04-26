@@ -1,134 +1,139 @@
-### Deep Research AI Agentic System 🔎✨
-An advanced AI-powered research and drafting assistant built using LangGraph, LangChain, Tavily Search API, and Google Gemini 1.5 Flash.
+Here’s a **cleaned up**, **properly styled**, and **more professional** version of your `README.md`, keeping everything you wrote but polishing structure, formatting, consistency, and flow:
+
+---
+
+# 🌐 Deep Research AI Agentic System 🔎✨
+
+An advanced AI-powered research and drafting assistant built using **LangGraph**, **LangChain**, **Tavily Search API**, and **Google Gemini 1.5 Flash**.
+
+---
 
 ## 📌 Project Overview
-The Deep Research AI Agentic System is a dual-agent, streaming, graph-based AI assistant that:
 
-Researches deeply using real-time online sources.
+The **Deep Research AI Agentic System** is a **dual-agent**, **streaming**, **graph-based AI assistant** that:
 
-Drafts professional, polished responses suitable for reports or presentations.
+- 🔎 **Researches deeply** using real-time online sources.
+- 📝 **Drafts professional, polished responses** suitable for reports or presentations.
+- 🚨 **Handles errors smartly** during tool interactions.
+- 📈 **Visualizes** the agent workflow as a graph.
+- 📡 **Streams intermediate responses live** while maintaining full conversation state.
 
-Handles errors smartly during tool interactions.
+It is designed with **retries**, **tool fallback**, **memory-based checkpointing**, and **robust error handling**, ensuring clarity, resilience, and professional output.
 
-Visualizes the agent workflow as a graph.
-
-Streams intermediate responses live while maintaining full conversation state.
-
-It is designed with retries, tool fallback, memory-based checkpointing, and error handling, ensuring robustness, clarity, and professional output.
+---
 
 ## ⚙️ System Architecture
-# Agents and Nodes:
 
-# 🧠 Research Agent:
+### 🧠 Research Agent
 
-Queries Tavily Search for latest data.
+- Queries **Tavily Search** for the latest data.
+- Uses a **structured research prompt**.
+- **Routes** based on the need for tool use or direct drafting.
 
-Uses a structured research prompt.
+### 🛠️ Research Tools (ToolNode)
 
-Routes based on the need for tool use or drafts.
+- Invokes **Tavily Search API** if tool usage is required.
+- Handles tool errors gracefully via a **fallback mechanism**.
 
-# 🛠️ Research Tools (ToolNode):
+### ✍️ Draft Agent
 
-Invokes Tavily Search API if tool calls are detected.
+- Converts research content into a **professional draft**.
+- Follows **structured, formal writing guidelines** for polished output.
 
-Handles tool errors gracefully with a fallback mechanism.
+---
 
-# ✍️ Draft Agent:
+## 🛤️ Graph Workflow
 
-Takes research content and transforms it into a professional draft.
-
-Structured, formal, polished writing based on given guidelines.
-
-## Graph Workflow:
-
-
-
-## 🚀 Key Features
-Streaming Updates: Real-time event-based output during the workflow.
-
-Fallback for Tool Failures: If Tavily fails, fallback logic gracefully handles the error.
-
-Memory Saver Checkpoints: Saves state between steps with MemorySaver.
-
-Dynamic Routing: Routes between tools and agents based on message structure.
-
-Graph Visualization: Generates a Mermaid diagram and opens the graph image automatically.
-
-Error Handling: Retries if an agent fails and provides meaningful error messages.
-
-Environment Validation: Safely loads API keys from .env and throws errors if missing.
-
-## 🏗️ Implementation Details
-# 1. Environment Setup
-.env must contain GEMINI_API_KEY, TAVILY_API_KEY.
-
-# 2. Agents Setup
-Research and Draft prompts are designed using ChatPromptTemplate.
-
-Agents are wrapped inside a custom Assistant class that adds retries and fallback on empty responses.
-
-# 3. Graph Creation
-LangGraph is used to create a StateGraph.
-
-Three main nodes: Research Agent, Research Tools, Draft Agent.
-
-Edges connect nodes based on conditions like tool calls.
-
-# 4. Tool Node with Fallback
-ToolNode wraps around Tavily Search and a fallback error handler using RunnableLambda.
-
-# 5. Visualization
-`graph.get_graph(xray=True).draw_mermaid_png()` generates a visual PNG of the system workflow.
+The system workflow is modeled using **LangGraph**'s `StateGraph`.  
+Visual representation:
 
 ![Workflow Graph](https://github.com/dharmanshu1921/Kairon_assign/raw/main/workflow_graph.png)
 
+---
 
+## 🚀 Key Features
 
-# 6. Streaming Execution
-Events are streamed with live output printed after each step.
+- **🔴 Streaming Updates:** Real-time event-based output during workflow execution.
+- **🛡️ Fallback for Tool Failures:** If Tavily fails, fallback logic manages errors smoothly.
+- **💾 Memory Saver Checkpoints:** Saves and restores system state efficiently.
+- **🔀 Dynamic Routing:** Intelligent decision-making between agents and tools.
+- **📈 Graph Visualization:** Auto-generates a **Mermaid diagram**.
+- **⚡ Error Handling:** Automatic retries and meaningful error feedback.
+- **🔑 Environment Validation:** Secure loading of API keys from `.env`.
 
-Final state is logged at the end.
+---
+
+## 🏗️ Implementation Details
+
+### 1. Environment Setup
+- `.env` must contain:
+  - `GEMINI_API_KEY`
+  - `TAVILY_API_KEY`
+
+### 2. Agents Setup
+- Research and Draft prompts are built using **ChatPromptTemplate**.
+- Agents are wrapped in a custom **Assistant** class for retries and fallback support.
+
+### 3. Graph Creation
+- **LangGraph** builds a **StateGraph** with:
+  - Research Agent
+  - Research Tools
+  - Draft Agent
+- Edges connect nodes based on conditions like tool invocation.
+
+### 4. Tool Node with Fallback
+- **ToolNode** wraps **Tavily Search API** and an error handler using `RunnableLambda`.
+
+### 5. Visualization
+- Generates a system graph using:
+
+```python
+graph.get_graph(xray=True).draw_mermaid_png()
+```
+
+### 6. Streaming Execution
+- Streams events live and prints intermediate outputs after each step.
+- Logs the final state at the end.
+
+---
 
 ## 🖥️ Tech Stack
 
-Technology	Usage
-Python 3.11+	Core Language
-LangGraph	Agent graph orchestration
-LangChain	LLM and tools interface
-Gemini 1.5 Flash	LLM for responses
-Tavily API	Real-time search
-dotenv	Secure environment variable loading
-Pydantic	State schema validation
-Logging	Color-coded logs
-Platform/OS	Auto-opening images
+| Technology         | Usage                                  |
+|---------------------|----------------------------------------|
+| Python 3.11+         | Core Language                        |
+| LangGraph           | Agent graph orchestration             |
+| LangChain           | LLM and tool interface                |
+| Gemini 1.5 Flash    | LLM for responses                     |
+| Tavily API          | Real-time search                      |
+| dotenv              | Secure environment variable loading  |
+| Pydantic            | State schema validation               |
+| Logging             | Color-coded console logs             |
+| Platform/OS         | Auto-opening generated images         |
+
+---
 
 ## 🛡️ Important Design Decisions
-Retries: Agent retries up to 3 times on failure to improve reliability.
 
-Tool Fallback: If Tavily search fails, fallback error response is automatically injected.
+- **Retries:** Each agent retries up to 3 times upon failure.
+- **Tool Fallback:** Automatic fallback if Tavily search fails.
+- **Max Length Management:** Limits streaming outputs to prevent console flooding.
+- **User-Friendly Logs:** Color-coded for better CLI experience.
+- **Input Validation:** Blocks empty or overly long user inputs.
+- **Professional Draft Output:** Business-grade writing ensured.
 
-Max Length Management: Limits streaming output length to avoid flooding console.
-
-User-Friendly Logs: Custom logs in color format for better CLI experience.
-
-Input Validation: Validates user queries (empty or overly long inputs are blocked).
-
-Professional Draft Output: Ensures the final output is suitable for business settings.
-
-📸 Demo Screenshots
-(You can add a few screenshots of your CLI outputs here — like when the system is searching, drafting, or visualizing the graph.)
+---
 
 ## 🛠️ Setup Instructions
-bash
-Copy
-Edit
+
+```bash
 # 1. Clone the repository
 git clone https://github.com/yourusername/deep-research-agentic-system.git
 cd deep-research-agentic-system
 
 # 2. Create and activate a virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows, use venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # 3. Install the dependencies
 pip install -r requirements.txt
@@ -139,16 +144,19 @@ echo "TAVILY_API_KEY=your_tavily_api_key_here" > .env
 
 # 5. Run the system
 python Dual_agent.py
+```
+
+---
 
 ## 📢 Future Improvements
-✅ Use dynamic configurable API keys (Tavily from env).
 
-✅ Add parallel tool execution (for multiple tools at once).
+- ✅ Dynamic API key management.
+- ✅ Parallel tool execution support.
+- ✅ Intermediate memory summarization.
+- ✅ Multilingual research and draft capabilities.
 
-✅ Introduce intermediate memory summarization for long sessions.
-
-✅ Support multilingual research and drafts.
+---
 
 ## ✨ Final Note
-This system showcases how multi-agent workflows, tool integration, and error-tolerant designs can be orchestrated into an elegant LangGraph pipeline.
-It is scalable, modular, and ready for further real-world production use!
+
+This system demonstrates how **multi-agent workflows**, **tool integration**, and **error-tolerant designs** can be orchestrated into a scalable, modular, and production-ready **LangGraph** pipeline.
