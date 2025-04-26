@@ -1,7 +1,3 @@
-Here’s a **cleaned up**, **properly styled**, and **more professional** version of your `README.md`, keeping everything you wrote but polishing structure, formatting, consistency, and flow:
-
----
-
 # 🌐 Deep Research AI Agentic System 🔎✨
 
 An advanced AI-powered research and drafting assistant built using **LangGraph**, **LangChain**, **Tavily Search API**, and **Google Gemini 1.5 Flash**.
