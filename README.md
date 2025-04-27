@@ -93,6 +93,12 @@ graph.get_graph(xray=True).draw_mermaid_png()
 
 ---
 
+## Output
+
+![Output](https://github.com/dharmanshu1921/Kairon_assign/blob/main/output.png)
+
+---
+
 ## 🖥️ Tech Stack
 
 | Technology         | Usage                                  |
